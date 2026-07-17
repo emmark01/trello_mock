@@ -1,0 +1,52 @@
+.board-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  color: #fff;
+  background: #00000029;
+  flex-shrink: 0;
+}
+
+.board-header h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.board-header__star {
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+}
+
+.board-header__star.is-starred,
+.board-header__star:hover {
+  color: #f2d600;
+}
+
+.board-header__workspace {
+  background: #ffffff24;
+  border-radius: var(--radius);
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.board-header__spacer {
+  flex: 1;
+}
+
+.board-header__btn {
+  border: 0;
+  background: #ffffff3d;
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 6px 10px;
+  font-weight: 600;
+}
+
+.board-header__btn:hover,
+.board-header__btn.is-active {
+  background: #ffffff52;
+}
