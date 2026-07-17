@@ -93,7 +93,13 @@ export default function BoardPage() {
 
   return (
     <div className="board-page" style={{ background: board.background }}>
-      <Header />
+      <Header
+        search={query}
+        onSearchChange={(value) => {
+          setQuery(value);
+          setFilterOpen(true);
+        }}
+      />
       <BoardHeader
         board={board}
         filterOpen={filterOpen}
