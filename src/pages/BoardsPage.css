@@ -1,0 +1,38 @@
+.boards-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+  width: 100%;
+}
+
+.boards-page__title {
+  font-size: 20px;
+  margin: 0 0 24px;
+}
+
+.boards-page__section {
+  margin-bottom: 32px;
+}
+
+.boards-page__section h2 {
+  font-size: 16px;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.boards-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.board-tile-placeholder {
+  min-height: 96px;
+  border-radius: var(--radius-lg);
+  background: var(--trello-blue);
+  color: #fff;
+  padding: 12px;
+  font-weight: 700;
+}
