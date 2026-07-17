@@ -52,7 +52,8 @@ export default function Header({ search, onSearchChange }) {
           id="global-search"
           type="search"
           placeholder="Search"
-          value={search ?? ''}
+          value={onSearchChange ? (search ?? '') : undefined}
+          defaultValue={onSearchChange ? undefined : ''}
           onChange={(event) => onSearchChange?.(event.target.value)}
         />
       </form>

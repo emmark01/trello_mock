@@ -18,3 +18,11 @@
   overflow-x: auto;
   flex: 1;
 }
+
+.board-page .kanban-card {
+  width: 256px;
+}
+
+.drag-overlay-card {
+  width: 256px;
+}

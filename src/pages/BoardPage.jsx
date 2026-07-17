@@ -131,7 +131,11 @@ export default function BoardPage() {
             <AddListForm boardId={board.id} />
           </div>
           <DragOverlay>
-            {draggingCard ? <Card card={draggingCard} onOpen={() => {}} /> : null}
+            {draggingCard ? (
+              <div className="drag-overlay-card">
+                <Card card={draggingCard} onOpen={() => {}} />
+              </div>
+            ) : null}
           </DragOverlay>
         </DndContext>
         <BoardSidebar board={board} open={menuOpen} onClose={() => setMenuOpen(false)} />
