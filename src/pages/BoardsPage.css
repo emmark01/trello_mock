@@ -28,11 +28,16 @@
   gap: 16px;
 }
 
-.board-tile-placeholder {
+.create-board-tile {
   min-height: 96px;
+  border: 0;
   border-radius: var(--radius-lg);
-  background: var(--trello-blue);
-  color: #fff;
-  padding: 12px;
-  font-weight: 700;
+  background: var(--list-bg);
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.create-board-tile:hover {
+  background: var(--list-bg-hover);
 }
