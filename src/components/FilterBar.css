@@ -1,0 +1,27 @@
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 12px 0;
+  align-items: center;
+}
+
+.filter-bar input,
+.filter-bar select {
+  border: 0;
+  border-radius: var(--radius);
+  padding: 8px 10px;
+  font-size: 14px;
+}
+
+.filter-bar__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.filter-bar__legend button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+}
