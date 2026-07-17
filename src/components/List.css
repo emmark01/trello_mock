@@ -41,4 +41,9 @@
   padding: 4px 8px;
   overflow-y: auto;
   flex: 1;
+  min-height: 24px;
+}
+
+.kanban-list__cards.is-over {
+  background: #dfe3e9;
 }

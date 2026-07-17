@@ -1,8 +1,17 @@
 import { useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import {
+  DndContext,
+  DragOverlay,
+  PointerSensor,
+  closestCorners,
+  useSensor,
+  useSensors,
+} from '@dnd-kit/core';
 import AddListForm from '../components/AddListForm.jsx';
 import BoardHeader from '../components/BoardHeader.jsx';
 import BoardSidebar from '../components/BoardSidebar.jsx';
+import Card from '../components/Card.jsx';
 import CardModal from '../components/CardModal.jsx';
 import FilterBar from '../components/FilterBar.jsx';
 import Header from '../components/Header.jsx';
@@ -12,7 +21,7 @@ import './BoardPage.css';
 
 export default function BoardPage() {
   const { boardId } = useParams();
-  const { getBoard } = useBoards();
+  const { getBoard, moveCard } = useBoards();
   const board = getBoard(boardId);
   const [menuOpen, setMenuOpen] = useState(false);
   const [filterOpen, setFilterOpen] = useState(false);
@@ -20,6 +29,10 @@ export default function BoardPage() {
   const [labelId, setLabelId] = useState('');
   const [memberId, setMemberId] = useState('');
   const [activeCard, setActiveCard] = useState(null);
+  const [draggingCard, setDraggingCard] = useState(null);
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
+  );
 
   const filteredBoard = useMemo(() => {
     if (!board) return null;
@@ -49,6 +62,27 @@ export default function BoardPage() {
     );
   }
 
+  const findListId = (id) => {
+    if (!board) return null;
+    if (board.lists.some((list) => list.id === id)) return id;
+    return board.lists.find((list) => list.cards.some((card) => card.id === id))?.id ?? null;
+  };
+
+  const handleDragStart = ({ active }) => {
+    const card = board.lists.flatMap((list) => list.cards).find((item) => item.id === active.id);
+    setDraggingCard(card ?? null);
+  };
+
+  const handleDragEnd = ({ active, over }) => {
+    setDraggingCard(null);
+    if (!over || active.id === over.id) return;
+    const fromList = findListId(active.id);
+    const toList = findListId(over.id);
+    if (!fromList || !toList) return;
+    const overIsList = board.lists.some((list) => list.id === over.id);
+    moveCard(board.id, active.id, toList, overIsList ? null : over.id);
+  };
+
   const listTitle = activeCard
     ? board.lists.find((list) => list.cards.some((card) => card.id === activeCard.id))?.title
     : '';
@@ -77,12 +111,23 @@ export default function BoardPage() {
         />
       )}
       <div className="board-page__body">
-        <div className="board-page__lists">
-          {filteredBoard.lists.map((list) => (
-            <List key={list.id} boardId={board.id} list={list} onOpenCard={setActiveCard} />
-          ))}
-          <AddListForm boardId={board.id} />
-        </div>
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCorners}
+          onDragStart={handleDragStart}
+          onDragCancel={() => setDraggingCard(null)}
+          onDragEnd={handleDragEnd}
+        >
+          <div className="board-page__lists">
+            {filteredBoard.lists.map((list) => (
+              <List key={list.id} boardId={board.id} list={list} onOpenCard={setActiveCard} />
+            ))}
+            <AddListForm boardId={board.id} />
+          </div>
+          <DragOverlay>
+            {draggingCard ? <Card card={draggingCard} onOpen={() => {}} /> : null}
+          </DragOverlay>
+        </DndContext>
         <BoardSidebar board={board} open={menuOpen} onClose={() => setMenuOpen(false)} />
       </div>
       {liveCard && (
