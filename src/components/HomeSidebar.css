@@ -1,0 +1,60 @@
+.home-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  padding: 24px 12px;
+}
+
+.home-sidebar__link,
+.home-sidebar__board,
+.home-sidebar__workspace {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.home-sidebar__link.is-active,
+.home-sidebar__link:hover,
+.home-sidebar__board:hover {
+  background: #e4f0f6;
+  color: var(--trello-blue-dark);
+}
+
+.home-sidebar__label {
+  margin: 16px 10px 8px;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.home-sidebar__swatch {
+  width: 24px;
+  height: 16px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.home-sidebar__create {
+  margin: 16px 10px 0;
+  border: 0;
+  background: var(--trello-blue);
+  color: #fff;
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  font-weight: 600;
+  width: calc(100% - 20px);
+}
+
+.home-sidebar__create:hover {
+  background: var(--trello-blue-hover);
+}
+
+@media (max-width: 800px) {
+  .home-sidebar {
+    display: none;
+  }
+}
