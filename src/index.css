@@ -1,0 +1,90 @@
+:root {
+  --trello-blue: #0079bf;
+  --trello-blue-dark: #026aa7;
+  --trello-blue-hover: #005a8c;
+  --header-bg: #026aa7;
+  --header-height: 48px;
+  --surface: #ffffff;
+  --list-bg: #ebecf0;
+  --list-bg-hover: #e2e4e9;
+  --page-bg: #f4f5f7;
+  --text: #172b4d;
+  --text-muted: #5e6c84;
+  --text-subtle: #6b778c;
+  --border: #dfe1e6;
+  --shadow: 0 1px 0 rgba(9, 30, 66, 0.25);
+  --shadow-lg: 0 8px 16px -4px rgba(9, 30, 66, 0.25);
+  --radius: 3px;
+  --radius-lg: 8px;
+  --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --label-green: #61bd4f;
+  --label-yellow: #f2d600;
+  --label-orange: #ff9f1a;
+  --label-red: #eb5a46;
+  --label-purple: #c377e0;
+  --label-blue: #0079bf;
+  --label-sky: #00c2e0;
+  --label-lime: #51e898;
+  --label-pink: #ff78cb;
+  --label-black: #344563;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--page-bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.app-shell {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-placeholder {
+  margin: 2rem;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
