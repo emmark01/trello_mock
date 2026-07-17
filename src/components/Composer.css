@@ -1,0 +1,58 @@
+.composer {
+  padding: 0 8px 8px;
+}
+
+.composer textarea,
+.composer input,
+.add-list-form input {
+  width: 100%;
+  border: 2px solid var(--trello-blue);
+  border-radius: var(--radius);
+  padding: 8px;
+  font-size: 14px;
+  resize: none;
+}
+
+.composer__actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.composer-toggle,
+.add-list-toggle {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text-muted);
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: var(--radius);
+  font-size: 14px;
+}
+
+.composer-toggle:hover {
+  background: #091e4214;
+  color: var(--text);
+}
+
+.add-list-toggle {
+  min-width: 272px;
+  background: #ffffff3d;
+  color: #fff;
+  font-weight: 600;
+  height: fit-content;
+  padding: 12px;
+}
+
+.add-list-toggle:hover {
+  background: #ffffff52;
+}
+
+.add-list-form {
+  min-width: 272px;
+  background: var(--list-bg);
+  border-radius: var(--radius-lg);
+  padding: 8px;
+  height: fit-content;
+}
