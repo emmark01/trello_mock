@@ -1,0 +1,42 @@
+.board-card {
+  position: relative;
+  min-height: 96px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.board-card__link {
+  display: block;
+  height: 100%;
+  min-height: 96px;
+  padding: 12px;
+  color: #fff;
+}
+
+.board-card__link h3 {
+  margin: 0;
+  font-size: 16px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.board-card:hover {
+  filter: brightness(1.08);
+}
+
+.board-card__star {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  border: 0;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 16px;
+  padding: 4px;
+  line-height: 1;
+}
+
+.board-card__star:hover,
+.board-card__star.is-starred {
+  color: #f2d600;
+}
