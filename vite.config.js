@@ -12,5 +12,8 @@ export default defineConfig({
     globals: true,
     setupFiles: './src/setupTests.js',
     css: true,
+    pool: 'threads',
+    maxWorkers: 1,
+    fileParallelism: false,
   },
 });
