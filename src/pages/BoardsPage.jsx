@@ -4,24 +4,14 @@ import BoardCard from '../components/BoardCard.jsx';
 import CreateBoardModal from '../components/CreateBoardModal.jsx';
 import HomeSidebar from '../components/HomeSidebar.jsx';
 import { useBoards } from '../context/BoardContext.jsx';
+import { filterBoards } from '../utils/filters.js';
 import './BoardsPage.css';
 
 export default function BoardsPage() {
   const { boards } = useBoards();
   const [open, setOpen] = useState(false);
   const [search, setSearch] = useState('');
-  const query = search.trim().toLowerCase();
-
-  const visibleBoards = useMemo(
-    () =>
-      boards.filter(
-        (board) =>
-          !query ||
-          board.title.toLowerCase().includes(query) ||
-          board.workspace.toLowerCase().includes(query),
-      ),
-    [boards, query],
-  );
+  const visibleBoards = useMemo(() => filterBoards(boards, search), [boards, search]);
 
   const starred = visibleBoards.filter((board) => board.starred);
   const workspaces = [...new Set(visibleBoards.map((board) => board.workspace))];

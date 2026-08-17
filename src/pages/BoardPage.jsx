@@ -17,6 +17,7 @@ import FilterBar from '../components/FilterBar.jsx';
 import Header from '../components/Header.jsx';
 import List from '../components/List.jsx';
 import { useBoards } from '../context/BoardContext.jsx';
+import { filterBoardLists } from '../utils/filters.js';
 import './BoardPage.css';
 
 export default function BoardPage() {
@@ -34,22 +35,10 @@ export default function BoardPage() {
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
   );
 
-  const filteredBoard = useMemo(() => {
-    if (!board) return null;
-    const needle = query.trim().toLowerCase();
-    return {
-      ...board,
-      lists: board.lists.map((list) => ({
-        ...list,
-        cards: list.cards.filter((card) => {
-          const matchesQuery = !needle || card.title.toLowerCase().includes(needle);
-          const matchesLabel = !labelId || card.labelIds.includes(labelId);
-          const matchesMember = !memberId || card.memberIds.includes(memberId);
-          return matchesQuery && matchesLabel && matchesMember;
-        }),
-      })),
-    };
-  }, [board, query, labelId, memberId]);
+  const filteredBoard = useMemo(
+    () => filterBoardLists(board, { query, labelId, memberId }),
+    [board, query, labelId, memberId],
+  );
 
   if (!board) {
     return (
