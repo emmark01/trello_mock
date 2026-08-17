@@ -1,20 +1,8 @@
 import { useBoards } from '../context/BoardContext.jsx';
+import { formatDue, isOverdue } from '../utils/dates.js';
 import Avatar from './Avatar.jsx';
 import LabelBadge from './LabelBadge.jsx';
 import './Card.css';
-
-const formatDue = (value) => {
-  if (!value) return null;
-  const date = new Date(`${value}T00:00:00`);
-  return date.toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
-};
-
-const isOverdue = (value) => {
-  if (!value) return false;
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return new Date(`${value}T00:00:00`) < today;
-};
 
 export default function Card({ card, onOpen, dragHandleProps }) {
   const { labels } = useBoards();
