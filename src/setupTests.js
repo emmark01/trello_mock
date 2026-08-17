@@ -48,3 +48,10 @@ afterEach(() => {
   cleanup();
   localStorage.clear();
 });
+
+const warn = console.warn;
+console.warn = (...args) => {
+  if (String(args[0] ?? '').includes('React Router Future Flag')) return;
+  warn(...args);
+};
+

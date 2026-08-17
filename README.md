@@ -22,6 +22,8 @@ The app runs at `http://localhost:5173`.
 | `npm run dev` | Start the Vite development server |
 | `npm run build` | Production build |
 | `npm run preview` | Preview the production build |
+| `npm test` | Watch unit tests (Vitest) |
+| `npm run test:run` | Run unit tests once |
 
 ## Features
 
